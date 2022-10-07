@@ -61,7 +61,7 @@ function vigenereDecryptCall(cypherIn, keyIn) {
     // let cypherIn = document.getElementById("outWindow").value;
     // let keyIn = document.getElementById("key").value;
 
-    console.log(keyIn);
+    // console.log(keyIn);
 
     cypherIn = cypherIn.toLowerCase();
     keyIn = keyIn.toLowerCase();
@@ -158,9 +158,9 @@ function hillEncrypt2(key, plain, n) {
     return ans;
 }
 
-function hillEncrypt1Call() {
-    let msg = document.getElementById("inputText").value;
-    let keyIn = document.getElementById("key").value;
+function hillEncrypt1Call(msg ,keyIn) {
+    // let msg = document.getElementById("inputText").value;
+    // let keyIn = document.getElementById("key").value;
 
     msg = msg.toUpperCase();
     keyIn = keyIn.toUpperCase();
@@ -170,11 +170,11 @@ function hillEncrypt1Call() {
 
     let cyphertext = hillEncrypt1(keyMat, plainA, msg.length );
 
-    document.getElementById("outWindow").innerHTML =cyphertext;
+    return cyphertext;
 }
-function hillEncrypt2Call() {
-    let msg = document.getElementById("outWindow").value;
-    let keyIn = document.getElementById("key").value;
+function hillEncrypt2Call(msg, keyIn) {
+    // let msg = document.getElementById("outWindow").value;
+    // let keyIn = document.getElementById("key").value;
 
     msg = msg.toUpperCase();
     keyIn = keyIn.toUpperCase();
@@ -184,7 +184,7 @@ function hillEncrypt2Call() {
 
     let cyphertext = hillEncrypt2(keyMat, plainA, msg.length );
 
-    document.getElementById("inputText").innerHTML =cyphertext;
+    return cyphertext;
 }
 
 // function hillCall() {
@@ -210,7 +210,7 @@ function hillEncrypt2Call() {
 function encryptButtonCall() {
     let algorithm = document.getElementById("algo").value;
     if(algorithm == "hill") {
-        hillEncrypt1Call();
+        outputText.value = hillEncrypt1Call(inputText.value, key.value);
     }
     else if(algorithm == "vigenere") {
         outputText.value = vigenereEncryptCall(inputText.value, key.value);
@@ -220,7 +220,7 @@ function encryptButtonCall() {
 function decryptButtonCall() {
     let algorithm = document.getElementById("algo").value;
     if(algorithm == "hill") {
-        hillEncrypt2Call();
+        outputText.value =  hillEncrypt2Call(inputText.value, key.value);;
     }
     else if(algorithm == "vigenere") {
         inputText.value =  vigenereDecryptCall(outputText.value, key.value);
@@ -228,5 +228,5 @@ function decryptButtonCall() {
 }
 
 // #encryptBtn
-document.querySelector("#encryptBtn").addEventListener("click",encryptButtonCall);
-document.querySelector("#decryptBtn").addEventListener("click",decryptButtonCall);
+document.querySelector("#encryptBtn").addEventListener("click",encryptButtonCall)
+document.querySelector("#decryptBtn").addEventListener("click",decryptButtonCall)
